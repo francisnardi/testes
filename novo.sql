@@ -39,14 +39,41 @@ SELECT
     ISNULL(S1.VNotional_Script1_Last12m, 0) - ISNULL(S2.VNotional_Script2_Last12m, 0) AS [Diff Script 1 vs 2 - Last 12m],
     ISNULL(S2.VNotional_Script2_Last12m, 0) - ISNULL(S3.VNotional_Script3_Last12m, 0) AS [Diff Script 2 vs 3 - Last 12m],
     ISNULL(S1.VNotional_Script1_Last12m, 0) - ISNULL(S3.VNotional_Script3_Last12m, 0) AS [Diff Script 1 vs 3 - Last 12m],
+    -- Porcentual de Diferença entre os scripts
+    CASE 
+        WHEN ISNULL(S1.VNotional_Script1_Last12m, 0) = 0 THEN NULL
+        ELSE (ISNULL(S1.VNotional_Script1_Last12m, 0) - ISNULL(S2.VNotional_Script2_Last12m, 0)) / ISNULL(S1.VNotional_Script1_Last12m, 0) * 100
+    END AS [Diff Script 1 vs 2 - Percent - Last 12m],
+    CASE 
+        WHEN ISNULL(S2.VNotional_Script2_Last12m, 0) = 0 THEN NULL
+        ELSE (ISNULL(S2.VNotional_Script2_Last12m, 0) - ISNULL(S3.VNotional_Script3_Last12m, 0)) / ISNULL(S2.VNotional_Script2_Last12m, 0) * 100
+    END AS [Diff Script 2 vs 3 - Percent - Last 12m],
+    CASE 
+        WHEN ISNULL(S1.VNotional_Script1_Last12m, 0) = 0 THEN NULL
+        ELSE (ISNULL(S1.VNotional_Script1_Last12m, 0) - ISNULL(S3.VNotional_Script3_Last12m, 0)) / ISNULL(S1.VNotional_Script1_Last12m, 0) * 100
+    END AS [Diff Script 1 vs 3 - Percent - Last 12m],
     -- Repita o mesmo para a coluna Last 11m
     ISNULL(S1.VNotional_Script1_Last11m, 0) AS [Script 1 - Last 11m],
     ISNULL(S2.VNotional_Script2_Last11m, 0) AS [Script 2 - Last 11m],
     ISNULL(S3.VNotional_Script3_Last11m, 0) AS [Script 3 - Last 11m],
     ISNULL(S1.VNotional_Script1_Last11m, 0) - ISNULL(S2.VNotional_Script2_Last11m, 0) AS [Diff Script 1 vs 2 - Last 11m],
     ISNULL(S2.VNotional_Script2_Last11m, 0) - ISNULL(S3.VNotional_Script3_Last11m, 0) AS [Diff Script 2 vs 3 - Last 11m],
-    ISNULL(S1.VNotional_Script1_Last11m, 0) - ISNULL(S3.VNotional_Script3_Last11m, 0) AS [Diff Script 1 vs 3 - Last 11m]
+    ISNULL(S1.VNotional_Script1_Last11m, 0) - ISNULL(S3.VNotional_Script3_Last11m, 0) AS [Diff Script 1 vs 3 - Last 11m],
+    -- Porcentual de Diferença para Last 11m
+    CASE 
+        WHEN ISNULL(S1.VNotional_Script1_Last11m, 0) = 0 THEN NULL
+        ELSE (ISNULL(S1.VNotional_Script1_Last11m, 0) - ISNULL(S2.VNotional_Script2_Last11m, 0)) / ISNULL(S1.VNotional_Script1_Last11m, 0) * 100
+    END AS [Diff Script 1 vs 2 - Percent - Last 11m],
+    CASE 
+        WHEN ISNULL(S2.VNotional_Script2_Last11m, 0) = 0 THEN NULL
+        ELSE (ISNULL(S2.VNotional_Script2_Last11m, 0) - ISNULL(S3.VNotional_Script3_Last11m, 0)) / ISNULL(S2.VNotional_Script2_Last11m, 0) * 100
+    END AS [Diff Script 2 vs 3 - Percent - Last 11m],
+    CASE 
+        WHEN ISNULL(S1.VNotional_Script1_Last11m, 0) = 0 THEN NULL
+        ELSE (ISNULL(S1.VNotional_Script1_Last11m, 0) - ISNULL(S3.VNotional_Script3_Last11m, 0)) / ISNULL(S1.VNotional_Script1_Last11m, 0) * 100
+    END AS [Diff Script 1 vs 3 - Percent - Last 11m]
 FROM Script1 S1
 FULL OUTER JOIN Script2 S2 ON S1.ClientTaxId = S2.ClientTaxId
 FULL OUTER JOIN Script3 S3 ON COALESCE(S1.ClientTaxId, S2.ClientTaxId) = S3.ClientTaxId
 ORDER BY [Client Name];
+
