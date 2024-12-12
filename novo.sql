@@ -2,8 +2,8 @@ WITH Script1 AS (
     SELECT 
         c.ClientTaxId,
         c.ClientLegalName,
-        p.VNotionalLast12mUSDtax AS VNotional_Script1_Last12m,
-        p.VNotionalLast11mUSDtax AS VNotional_Script1_Last11m
+        p.V1INotionalLast12mUSDPtax AS VNotional_Script1_Last12m,
+        p.V1INotionalLast11mUSDPtax AS VNotional_Script1_Last11m
     FROM [change].[dbo].[TB_RISKBASED_CLIENTTRANSACTIONALPROFILE] p
     INNER JOIN TB_RISKBASED_CLIENT c ON c.ClientTaxId = p.ClientTaxId
     WHERE p.UserLastUpdate = 'Old_Script_New_Natures_251206'
@@ -12,8 +12,8 @@ Script2 AS (
     SELECT 
         c.ClientTaxId,
         c.ClientLegalName,
-        p.VNotionalLast12mUSDtax AS VNotional_Script2_Last12m,
-        p.VNotionalLast11mUSDtax AS VNotional_Script2_Last11m
+        p.V1INotionalLast12mUSDPtax AS VNotional_Script2_Last12m,
+        p.V1INotionalLast11mUSDPtax AS VNotional_Script2_Last11m
     FROM [change].[dbo].[TB_RISKBASED_CLIENTTRANSACTIONALPROFILE] p
     INNER JOIN TB_RISKBASED_CLIENT c ON c.ClientTaxId = p.ClientTaxId
     WHERE p.UserLastUpdate = 'New_Script_New_Natures_Inactive_251206'
@@ -22,8 +22,8 @@ Script3 AS (
     SELECT 
         c.ClientTaxId,
         c.ClientLegalName,
-        p.VNotionalLast12mUSDtax AS VNotional_Script3_Last12m,
-        p.VNotionalLast11mUSDtax AS VNotional_Script3_Last11m
+        p.V1INotionalLast12mUSDPtax AS VNotional_Script3_Last12m,
+        p.V1INotionalLast11mUSDPtax AS VNotional_Script3_Last11m
     FROM [change].[dbo].[TB_RISKBASED_CLIENTTRANSACTIONALPROFILE] p
     INNER JOIN TB_RISKBASED_CLIENT c ON c.ClientTaxId = p.ClientTaxId
     WHERE p.UserLastUpdate = 'New_Script_New_Natures_Active_251206'
