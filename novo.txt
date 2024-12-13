@@ -1,0 +1,15 @@
+Boa tarde, pessoal,
+
+Tudo bem?
+
+Realizei uma nova análise das comparações entre os scripts 1, 2 e 3. O script 3, que apresentava um erro "proporcional", manteve-se com essa característica.
+
+Sobre os outros scripts:
+
+Script 1: Refere-se ao cálculo considerando as naturezas de câmbio societárias.
+Script 2: É o novo cálculo, que desconsidera as naturezas de câmbio societárias, mas, como mencionei anteriormente, os resultados ainda parecem distorcidos, embora menos distorcidos quando comparados ao script 3.
+Nos próximos dias, vou alinhar com o Cachoni para fazer ajustes na consulta SQL e garantir que a próxima planilha reflita os resultados esperados de forma precisa.
+
+Se tiverem alguma dúvida ou sugestão, fico à disposição.
+
+Atenciosamente,
