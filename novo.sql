@@ -30,7 +30,7 @@ SELECT
     ISNULL(S1.VlAvgMonthlyNotional_Script1_12m, 0) - ISNULL(S2.VlAvgMonthlyNotional_Script2_12m, 0) AS [Diff Avg Monthly Notional 12m],
     CASE 
         WHEN ISNULL(S1.VlAvgMonthlyNotional_Script1_12m, 0) = 0 THEN NULL
-        ELSE (ISNULL(S1.VlAvgMonthlyNotional_Script1_12m, 0) - ISNULL(S2.VlAvgMonthlyNotional_Script2_12m, 0)) / ISNULL(S1.VlAvgMonthlyNotional_Script1_12m, 0) * 100
+        ELSE ROUND((ISNULL(S1.VlAvgMonthlyNotional_Script1_12m, 0) - ISNULL(S2.VlAvgMonthlyNotional_Script2_12m, 0)) / ISNULL(S1.VlAvgMonthlyNotional_Script1_12m, 0) * 100, 1)
     END AS [Diff Avg Monthly Notional 12m - Percent],
     
     -- VlNotionalLast12mUSDPtax comparison
@@ -39,7 +39,7 @@ SELECT
     ISNULL(S1.VlNotional_Script1_Last12m, 0) - ISNULL(S2.VlNotional_Script2_Last12m, 0) AS [Diff Script 1 vs 2 - Last 12m],
     CASE 
         WHEN ISNULL(S1.VlNotional_Script1_Last12m, 0) = 0 THEN NULL
-        ELSE (ISNULL(S1.VlNotional_Script1_Last12m, 0) - ISNULL(S2.VlNotional_Script2_Last12m, 0)) / ISNULL(S1.VlNotional_Script1_Last12m, 0) * 100
+        ELSE ROUND((ISNULL(S1.VlNotional_Script1_Last12m, 0) - ISNULL(S2.VlNotional_Script2_Last12m, 0)) / ISNULL(S1.VlNotional_Script1_Last12m, 0) * 100, 1)
     END AS [Diff Script 1 vs 2 - Percent - Last 12m],
 
     -- VlNotionalLast11mUSDPtax comparison
@@ -48,7 +48,7 @@ SELECT
     ISNULL(S1.VlNotional_Script1_Last11m, 0) - ISNULL(S2.VlNotional_Script2_Last11m, 0) AS [Diff Script 1 vs 2 - Last 11m],
     CASE 
         WHEN ISNULL(S1.VlNotional_Script1_Last11m, 0) = 0 THEN NULL
-        ELSE (ISNULL(S1.VlNotional_Script1_Last11m, 0) - ISNULL(S2.VlNotional_Script2_Last11m, 0)) / ISNULL(S1.VlNotional_Script1_Last11m, 0) * 100
+        ELSE ROUND((ISNULL(S1.VlNotional_Script1_Last11m, 0) - ISNULL(S2.VlNotional_Script2_Last11m, 0)) / ISNULL(S1.VlNotional_Script1_Last11m, 0) * 100, 1)
     END AS [Diff Script 1 vs 2 - Percent - Last 11m]
 FROM Script1 S1
 FULL OUTER JOIN Script2 S2 ON S1.ClientTaxId = S2.ClientTaxId
