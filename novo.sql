@@ -50,6 +50,8 @@ SELECT
 FROM Script1 S1
 FULL OUTER JOIN Script2 S2 ON S1.ClientTaxId = S2.ClientTaxId
 FULL OUTER JOIN Script3 S3 ON COALESCE(S1.ClientTaxId, S2.ClientTaxId) = S3.ClientTaxId
+ORDER BY [Client Name];
+GO 
 
 -- Tabela para VlNotionalLast12mUSDPtax
 WITH Script1 AS (
@@ -103,6 +105,8 @@ SELECT
 FROM Script1 S1
 FULL OUTER JOIN Script2 S2 ON S1.ClientTaxId = S2.ClientTaxId
 FULL OUTER JOIN Script3 S3 ON COALESCE(S1.ClientTaxId, S2.ClientTaxId) = S3.ClientTaxId
+ORDER BY [Client Name];
+GO 
 
 -- Tabela para VlNotionalLast11mUSDPtax
 WITH Script1 AS (
@@ -157,3 +161,4 @@ FROM Script1 S1
 FULL OUTER JOIN Script2 S2 ON S1.ClientTaxId = S2.ClientTaxId
 FULL OUTER JOIN Script3 S3 ON COALESCE(S1.ClientTaxId, S2.ClientTaxId) = S3.ClientTaxId
 ORDER BY [Client Name];
+GO
