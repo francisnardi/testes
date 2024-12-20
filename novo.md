@@ -1,1 +1,0 @@
-For access to the office on designated in-office workdays
